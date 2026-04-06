@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ilham Firmansyah | Portofolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(rgba(18,18,18,0.85), rgba(18,18,18,0.9)), url('img/background.jpg'); background-size: cover; background-position: center; background-attachment: fixed; scroll-behavior: smooth; }
+        .sidebar-card, .main-content { background: rgba(30,30,30,0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
+        .nav-card { background: #2b2b2c; border: 1px solid #383838; border-bottom-left-radius: 20px; }
+        .icon-box { background: linear-gradient(to bottom right, #3f3f40 0%, #303030 100%); }
+        .accent-text { color: #ffdb70; }
+        .accent-bg { background: #ffdb70; }
+        .skill-card { background: #2b2b2c; border: 1px solid #383838; }
+
+        /* Kontrol Tampilan Section */
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: fadeUp 0.5s ease forwards; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-btn.active { color: #ffdb70; }
+        .nav-btn.active {
+            background-color: #ffdb70;
+            color: #121212 !important;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body class="text-gray-300 p-4 md:p-10 lg:p-20">
+
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
+        
+        <!-- SIDEBAR -->
+        <aside class="lg:w-1/4 sidebar-card rounded-3xl p-8 flex flex-col items-center text-center sticky top-10 h-fit">
+            <div class="w-32 h-32 bg-[#383838] rounded-3xl mb-6 overflow-hidden">
+                <img src="img/profil1.jpg" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-white text-xl font-semibold mb-2 text-nowrap">M. Ilham Firmansyah</h1>
+            <p class="bg-[#2b2b2c] text-xs px-3 py-1 rounded-md mb-8 uppercase tracking-widest">Data Analyst</p>
+            
+            <div class="w-full h-[1px] bg-[#383838] mb-8"></div>
+
+            <div class="space-y-6 w-full text-sm">
+                <div class="flex items-center gap-4 text-left">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center accent-text shrink-0"><i class="far fa-envelope"></i></div>
+                    <div class="overflow-hidden"><p class="text-[10px] text-gray-400 uppercase">Email</p><p class="truncate">muhammad.if500@gmail.com</p></div>
+                </div>
+                <div class="flex items-center gap-4 text-left">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center accent-text shrink-0"><i class="fas fa-mobile-alt"></i></div>
+                    <div><p class="text-[10px] text-gray-400 uppercase">Phone</p><p>+6285850438127</p></div>
+                </div>
+                <div class="flex items-center gap-4 text-left">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center accent-text shrink-0"><i class="far fa-calendar-alt"></i></div>
+                    <div><p class="text-[10px] text-gray-400 uppercase">Birthday</p><p>11 Oktober 2004</p></div>
+                </div>
+                <div class="flex items-center gap-4 text-left">
+                    <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center accent-text shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+                    <div><p class="text-[10px] text-gray-400 uppercase">Location</p><p>Mojokerto, Jawa Timur</p></div>
+                </div>
+            </div>
+
+            <div class="w-full h-[1px] bg-[#383838] my-6"></div>
+            <div class="flex justify-center gap-6 text-gray-400">
+                <a href="https://wa.me/6285850438127" target ="_blank" class= "hover:text-[#ffdb70] transition-colors-xl"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/IlhamM5559" target="_blank" class="hover:text-[#ffdb70] transition-colors-xl"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/ilhmfrsyh_" target="_blank" class="hover:text-[#ffdb70] transition-colors-xl"><i class="fab fa-instagram"></i></a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="lg:w-3/4 relative">
+            
+            <!-- NAV MENU -->
+            <nav class="flex justify-end mb-6 hidden md:flex">
+                <div class="nav-card px-10 py-5 flex gap-8 rounded-tr-3xl">
+                    <button onclick="openTab('about')" class="nav-btn text-sm font-medium hover:text-gray-400 px-3 py-1 rounded-lg active" id="btn-about">About</button>
+                    <button onclick="openTab('resume')" class="nav-btn text-sm font-medium hover:text-gray-400 px-3 py-1 rounded-lg active" id="btn-resume">Resume</button>
+                    <button onclick="openTab('portfolio')" class="nav-btn text-sm font-medium hover:text-gray-400 px-3 py-1 rounded-lg active" id="btn-portfolio">Portfolio</button>
+                    <button onclick="openTab('gallery')" class="nav-btn text-sm font-medium hover:text-gray-400 px-3 py-1 rounded-lg active" id="btn-gallery">Gallery</button>
+                    <button onclick="openTab('blog')" class="nav-btn text-sm font-medium hover:text-gray-400 px-3 py-1 rounded-lg active" id="btn-blog">Blog</button>
+                    <button onclick="openTab('contact')" class="nav-btn text-sm font-medium hover:text-gray-400 px-3 py-1 rounded-lg active" id="btn-contact">Contact</button>
+                </div>
+            </nav>
+
+            <section class="main-content rounded-3xl p-8 md:p-12 pt-20 min-h-[80vh]">
+                
+                <!-- ABOUT SECTION -->
+                <div id="about" class="content-section active">
+                    <h2 class="text-white text-3xl font-bold mb-4 relative inline-block">
+                        About Me
+                        <div class="h-1 w-12 accent-bg rounded-full mt-2"></div>
+                    </h2>
+                    <p class="mt-6 leading-relaxed text-gray-400">
+                        Saya adalah mahasiswa Statistika di Institut Teknologi Sepuluh Nopember yang memiliki minat kuat dalam bidang analisis data, visualisasi, dan pengambilan keputusan berbasis data. Saya terbiasa mengolah data menjadi informasi yang bermakna serta mampu menyajikannya dalam bentuk yang mudah dipahami.
+                    </p>
+                    <p class="mt-6 leading-relaxed text-gray-400">
+                        Dengan kemampuan di berbagai tools seperti Python, R, Excel, dan Power BI, saya berfokus pada pengembangan solusi berbasis data yang tidak hanya akurat, tetapi juga relevan dan aplikatif. Saya memiliki semangat belajar yang tinggi, kemampuan berpikir analitis, serta mampu bekerja secara individu maupun dalam tim untuk menghasilkan output terbaik.
+                    </p>
+                    <h3 class="text-white text-xl font-bold mt-12 mb-6">What I'm Doing</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="skill-card p-6 rounded-2xl flex gap-4">
+                            <i class="fas fa-chart-line accent-text text-3xl shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold">Data Analysis</h4>
+                                <p class="text-xs text-gray-400 mt-1">Analisis dan visualisasi data secara profesional.</p>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-2xl flex gap-4">
+                            <i class="fas fa-code accent-text text-3xl shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold">Programming</h4>
+                                <p class="text-xs text-gray-400 mt-1">Pengembangan logika pemrograman untuk solusi efisien.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-white text-xl font-bold mt-12 mb-6">Tools & Technologies</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Python -->
+                        <div class="skill-card p-6 rounded-2xl flex gap-4">
+                            <i class="fab fa-python accent-text text-3xl shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold">Python</h4>
+                                <p class="text-xs text-gray-400 mt-1">Data analysis, machine learning, automation.</p>
+                            </div>
+                        </div>
+                        <!-- Excel -->
+                        <div class="skill-card p-6 rounded-2xl flex gap-4">
+                            <i class="fas fa-file-excel accent-text text-3xl shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold">Microsoft Excel</h4>
+                                <p class="text-xs text-gray-400 mt-1">Data processing, pivot tables, dashboard.</p>
+                            </div>
+                        </div>
+                        <!-- Power BI -->
+                        <div class="skill-card p-6 rounded-2xl flex gap-4">
+                            <i class="fas fa-chart-pie accent-text text-3xl shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold">Power BI</h4>
+                                <p class="text-xs text-gray-400 mt-1">Interactive dashboard & business intelligence.</p>
+                            </div>
+                        </div>
+                        <!-- R -->
+                        <div class="skill-card p-6 rounded-2xl flex gap-4">
+                            <i class="fas fa-chart-line accent-text text-3xl shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold">R Studio</h4>
+                                <p class="text-xs text-gray-400 mt-1">Statistical analysis & visualization.</p>
+                            </div>
+                        </div>
+                         <!-- SPSS -->
+                        <div class="skill-card p-6 rounded-2xl flex gap-4">
+                            <i class="fas fa-database accent-text text-3xl shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold">SPSS</h4>
+                                <p class="text-xs text-gray-400 mt-1">Data analysis & research statistics.</p>
+                            </div>
+                        </div>
+                        <!-- Data Visualization -->
+                        <div class="skill-card p-6 rounded-2xl flex gap-4">
+                            <i class="fas fa-chart-bar accent-text text-3xl shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold">Data Visualization</h4>
+                                <p class="text-xs text-gray-400 mt-1">Transforming data into meaningful insights.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESUME SECTION -->
+                <div id="resume" class="content-section">
+                    <h2 class="text-white text-3xl font-bold mb-8 relative inline-block">
+                        Resume
+                        <div class="h-1 w-12 accent-bg rounded-full mt-2"></div>
+                    </h2>
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center accent-text"><i class="fas fa-briefcase"></i></div>
+                            <h4 class="text-white text-xl font-bold">Education</h4>
+                        </div>
+                        <div class="ml-5 border-l border-[#383838] space-y-10">
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">Institut Teknologi Sepuluh Nopember</h5>
+                                <p class="accent-text text-xs mb-2">2023 — Sekarang</p>
+                                <p class="text-sm text-gray-400">S1 - Statistika - Fakultas Sains dan Analitika Data.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">SMA Negeri 3 Kota Mojokerto</h5>
+                                <p class="accent-text text-xs mb-2">2020-2023</p>
+                                <p class="text-sm text-gray-400">Jurusan Matematika dan Ilmu Pengetahuan (MIPA).</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">SMP Negeri 6 Kota Mojokerto</h5>
+                                <p class="accent-text text-xs mb-2">2017-2020</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">SDN Pulorejo 2 Kota Mojokerto</h5>
+                                <p class="accent-text text-xs mb-2">2011-2017</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center accent-text"><i class="fas fa-book-open"></i></div>
+                            <h4 class="text-white text-xl font-bold">Experience</h4>
+                        </div>
+                        <div class="ml-5 border-l border-[#383838] space-y-10">
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">Badan Eksekutif Mahasiswa FSAD ITS</h5>
+                                <p class="accent-text text-xs mb-2">2025 — 2026 Sebagai Ketua Divisi Harmonisasi Departemen Dalam Negeri</p>
+                                <p class="text-sm text-gray-400">Mengoordinasikan dan menjaga hubungan yang harmonis antar anggota serta antar divisi dalam organisasi. Selain itu, berperan dalam merancang program kerja yang mendukung kekompakan internal, meningkatkan rasa kebersamaan, serta memastikan setiap kegiatan berjalan selaras dengan tujuan organisasi.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">ILITS X FORMITS 2025</h5>
+                                <p class="accent-text text-xs mb-2">2024-2025 Sebagai Ketua Divisi Data Center</p>
+                                <p class="text-sm text-gray-400">Bertanggung jawab dalam mengoordinasikan pembagian tugas serta memberikan arahan yang jelas kepada staf dan staf ahli agar setiap pekerjaan dapat berjalan secara efektif dan terstruktur. Selain itu, juga melakukan pengawasan terhadap proses administrasi serta memastikan seluruh data dan dokumen terkumpul dengan baik dan berkoordinasi dengan divisi lain untuk memastikan kelengkapan administrasi sehingga tidak ada dokumen yang terlewat dan seluruh kebutuhan organisasi dapat terpenuhi secara optimal.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">Pekan Raya Statistika 2024</h5>
+                                <p class="accent-text text-xs mb-2">2024 Sebagai Staf Divisi Data Management</p>
+                                <p class="text-sm text-gray-400">Bertanggungjawab mengurus dan menghimpun semua kebutuhan administrasi peserta PRS 2024.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">Aksi Nirwasita 5.0 FSAD ITS</h5>
+                                <p class="accent-text text-xs mb-2">2024 Sebagai Staf Divisi Analyst</p>
+                                <p class="text-sm text-gray-400">Bertanggung jawab dalam memenuhi seluruh kebutuhan administrasi peserta selama kegiatan berlangsung. Selain itu, juga berperan dalam memandu dan memberikan study case kepada perserta dan mampu berkomunikasi serta berinterasi langsung dengan peserta.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">OKKBK Statistika 2024</h5>
+                                <p class="accent-text text-xs mb-2">2024 Sebagai Staf Divisi Kestari</p>
+                                <p class="text-sm text-gray-400">Bertanggung jawab dalam memenuhi seluruh kebutuhan peserta selama kegiatan berlangsung. Selain itu, memastikan bahwa peserta memperoleh informasi yang jelas dan tepat terkait jalannya kegiatan.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">FSAD FAIR 2024</h5>
+                                <p class="accent-text text-xs mb-2">2024 Sebagai Staf Divisi Secretarial</p>
+                                <p class="text-sm text-gray-400">Bertanggungjawab untuk mengurus dan menghimpun semua kebutuhan administrasi peserta FSAD FAIR 2024.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">ILITS X FORMITS 2024</h5>
+                                <p class="accent-text text-xs mb-2">2023- 2024 Sebagai Staf Divisi Data Center</p>
+                                <p class="text-sm text-gray-400">Bbertanggung jawab dalam menyusun form absensi dan feedback yang digunakan selama kegiatan visit dan welcome. Selain itu, juga melakukan rekapitulasi data absensi dan feedback peserta.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="icon-box w-10 h-10 rounded-xl flex items-center justify-center accent-text"><i class="fas fa-book-open"></i></div>
+                            <h4 class="text-white text-xl font-bold">Achievment Experience</h4>
+                        </div>
+                        <div class="ml-5 border-l border-[#383838] space-y-10">
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">ITS Youth Tecnopreneur</h5>
+                                <p class="accent-text text-xs mb-2">2024 - Sebagai Chief Marketing Officer</p>
+                                <p class="text-sm text-gray-400">Pendanaan Bisnis - ITS Youth Tecnopreneur 2024.</p>
+                                <p class="text-sm text-gray-400">Awwarde Funding For TELL-GIA in Digital Bussiness.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute w-2 h-2 accent-bg rounded-full -left-[5px] top-2 shadow-[0_0_10px_#ffdb70]"></div>
+                                <h5 class="text-white font-semibold">Pengabdian Masyarakat</h5>
+                                <p class="accent-text text-xs mb-2">2025</p>
+                                <p class="text-sm text-gray-400">Pelatihan Metode Statistika Bagi Guru MAN 1 Pasuruan - Lab Analitika Data Sosial dan Statistika Ofisial (8 November 2025).</p>
+                                <p class="text-sm text-gray-400">MUFG Bersama Kitabisa Dukung Keberlanjutan Ekononomi Pesisir - Kampung Nelayan Nambangan, Surabaya (13 Desember 2025).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- My Skills Section -->
+                    <div class="mt-12">
+                        <h3 class="text-white text-2xl font-bold mb-8">My Skills</h3>
+                        
+                        <div class="skill-card p-8 rounded-3xl space-y-6">
+                            <!-- Skill 1 -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h5 class="text-white font-semibold text-sm">Analisis dan Visualisasi Data</h5>
+                                    <span class="text-gray-400 text-sm">90%</span>
+                                </div>
+                                <div class="w-full bg-[#383838] h-2 rounded-full overflow-hidden">
+                                    <div class="accent-bg h-full rounded-full shadow-[0_0_8px_#ffdb70]" style="width: 80%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 2 -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h5 class="text-white font-semibold text-sm">Microsof Excel</h5>
+                                    <span class="text-gray-400 text-sm">80%</span>
+                                </div>
+                                <div class="w-full bg-[#383838] h-2 rounded-full overflow-hidden">
+                                    <div class="accent-bg h-full rounded-full shadow-[0_0_8px_#ffdb70]" style="width: 70%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 3 -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h5 class="text-white font-semibold text-sm">Pemograman</h5>
+                                    <span class="text-gray-400 text-sm">60%</span>
+                                </div>
+                                <div class="w-full bg-[#383838] h-2 rounded-full overflow-hidden">
+                                    <div class="accent-bg h-full rounded-full shadow-[0_0_8px_#ffdb70]" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 4 -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h5 class="text-white font-semibold text-sm">Graphic Desain</h5>
+                                    <span class="text-gray-400 text-sm">50%</span>
+                                </div>
+                                <div class="w-full bg-[#383838] h-2 rounded-full overflow-hidden">
+                                    <div class="accent-bg h-full rounded-full shadow-[0_0_8px_#ffdb70]" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="portfolio" class="content-section">
+                    <h2 class="text-white text-3xl font-bold mb-8 relative inline-block">
+                        Portfolio
+                        <div class="h-1 w-12 accent-bg rounded-full mt-2"></div>
+                    </h2>
+
+                    <!-- FILTER MENU -->
+                    <div class="flex gap-6 text-sm mb-8">
+                        <button class="filter-btn accent-text" onclick="filterPortfolio(event,'all')">All</button>
+                        <button class="filter-btn" onclick="filterPortfolio(event,'academic')">Academic Project</button>
+                        <button class="filter-btn" onclick="filterPortfolio(event,'dashboard')">Dashboard</button>
+                        <button class="filter-btn" onclick="filterPortfolio(event,'infografis')">Infografis</button>
+                    </div>
+
+                    <!-- GRID PORTFOLIO -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                        <!-- ITEM 1 -->
+                        <a href="project/project1.pdf" target="_blank" class="portfolio-item academic block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/academicproject1.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Analisis Indeks Pembangunan Manusia di Provinsi Kepulauan Riau </h4>
+                                    <p class="text-gray-400 text-sm">Academic Project</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="project/project2.pdf" target="_blank" class="portfolio-item academic block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/academicproject2.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Pemodelan Jumlah Penderita Kusta Di Kabupaten Probolinggo Tahun 2014 Menggunakan Generalized Poisson Regression (GPR) </h4>
+                                    <p class="text-gray-400 text-sm">Academic Project</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="project/project3.pdf" target="_blank" class="portfolio-item academic block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/academicproject3.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Analisis Faktor-Faktor Yang Diduga Mempengaruhi Gangguan Tidur Menggunakan Metode Regresi Logistik Multinomial </h4>
+                                    <p class="text-gray-400 text-sm">Academic Project</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="project/project4.pdf" target="_blank" class="portfolio-item academic block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/academicproject4.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Analisis Faktor-Faktor Yang Mempengaruhi Tingkat Berat Badan Menggunakan Regresi Logistik Ordinal </h4>
+                                    <p class="text-gray-400 text-sm">Academic Project</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="project/project5.pdf" target="_blank" class="portfolio-item academic block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/academicproject5.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Analisis Faktor-Faktor Yang Diduga Mempengaruhi Ketahanan Pangan Di Indonesia Menurut Kabupaten dan Kota  Menggunakan Metode Regresi Probit Ordinal </h4>
+                                    <p class="text-gray-400 text-sm">Academic Project</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="project/project6.pdf" target="_blank" class="portfolio-item academic block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/academicproject6.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">A Two-Stage IndoBERTweet-Based Approach for Cyberbullying Detection and Type Classification in Indonesian Tweets </h4>
+                                    <p class="text-gray-400 text-sm">Academic Project</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- ITEM 2 -->
+                        <a href="project/dashboard1.xlsx" download class="portfolio-item dashboard block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/dashboard1.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Dashboard Kepuasan Layanan Polres</h4>
+                                    <p class="text-gray-400 text-sm">Dashboard</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="project/dashboard2.xlsx" download class="portfolio-item dashboard block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/dashboard2.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Dashboard Rekap Pengeluaran PDPM ITS 2025</h4>
+                                    <p class="text-gray-400 text-sm">Dashboard</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="project/dashboard3.pdf" target="_blank" class="portfolio-item academic block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/dashboard3.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Dashboard Supermarket Sales</h4>
+                                    <p class="text-gray-400 text-sm">Dashboard</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- ITEM 3 -->
+                        <a href="project/project10.pdf" target="_blank" class="portfolio-item infografis block">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/poster1.png" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Poster IKS Kota Mojokerto 2025</h4>
+                                    <p class="text-gray-400 text-sm">Infografis</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <!-- GALLERY SECTION -->
+                <div id="gallery" class="content-section">
+                    <h2 class="text-white text-3xl font-bold mb-8 relative inline-block">
+                        Gallery
+                        <div class="h-1 w-12 accent-bg rounded-full mt-2"></div>
+                    </h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- ITEM 1 -->
+                        <div onclick="openImage(this)" class="cursor-pointer">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/gallery1.jpeg" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Orientasi Pengenalan Pelaksanaan Kerja Praktik di PDPM ITS 2026</h4>
+                                    <p class="text-gray-400 text-sm">Kegiatan Kerja Praktik</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ITEM 2 -->
+                        <div onclick="openImage(this)" class="cursor-pointer">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/gallery2.jpeg" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Pengabdian Masyarakat Bersama MUFG dan Kitabisa di Kampung Nelayan Nambangan</h4>
+                                    <p class="text-gray-400 text-sm">Pengabdian Masyarakat</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ITEM 3 -->
+                        <div onclick="openImage(this)" class="cursor-pointer">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/gallery3.jpeg" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Pengabdian Masyarakat Bersama Dosen Statistika ITS di MAN 1 Pasuruan</h4>
+                                    <p class="text-gray-400 text-sm">Pengabdian Masyarakat</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ITEM 4 -->
+                        <div onclick="openImage(this)" class="cursor-pointer">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/gallery4.jpeg" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Kegiatan Internalisasi dan Upgrading Staf BEM FSAD ITS 2025 di Batu, Malang</h4>
+                                    <p class="text-gray-400 text-sm">Kegiatan Organisasi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ITEM 5 -->
+                        <div onclick="openImage(this)" class="cursor-pointer">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/gallery5.jpeg" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Kegiatan Farewell Party FORMITS X ILITS 2025 di Pacet, Mojokerto</h4>
+                                    <p class="text-gray-400 text-sm">Kegiatan Kepanitiaan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ITEM 6 -->
+                        <div onclick="openImage(this)" class="cursor-pointer">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/gallery6.jpeg" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Kegiatan Welcome Sepuluh Nopember FORMITS X ILITS 2025 di SMKN 1 Mojokerto</h4>
+                                    <p class="text-gray-400 text-sm">Kegiatan Kepanitiaan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ITEM 7 -->
+                        <div onclick="openImage(this)" class="cursor-pointer">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/gallery7.jpeg" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Peserta Demo Day ITS 2024 di Graha Sepuluh Nopember ITS</h4>
+                                    <p class="text-gray-400 text-sm">Kegiatan IYT 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ITEM 8 -->
+                        <div onclick="openImage(this)" class="cursor-pointer">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/gallery8.jpeg" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Panitia Kegiatan Aksi Nirwasita 5.0 FSAD ITS 2024</h4>
+                                    <p class="text-gray-400 text-sm">Kegiatan Kepanitiaan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ITEM 9 -->
+                        <div onclick="openImage(this)" class="cursor-pointer">
+                            <div class="bg-[#2b2b2c] rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+                                <img src="img/gallery9.jpeg" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-white font-semibold">Panitia Kegiatan Pekan Raya Statistika ITS 2024</h4>
+                                    <p class="text-gray-400 text-sm">Kegiatan Kepanitiaan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- BLOG SECTION -->
+                <div id="blog" class="content-section">
+                    <h2 class="text-white text-3xl font-bold mb-4 relative inline-block">
+                        Blog
+                        <div class="h-1 w-12 accent-bg rounded-full mt-2"></div>
+                    </h2>
+                    <div class="mt-8 text-center p-20 border border-dashed border-[#383838] rounded-2xl">
+                        <p class="text-gray-500 italic">Belum ada artikel yang dipublikasikan.</p>
+                    </div>
+                </div>
+
+                <!-- CONTACT SECTION -->
+                <div id="contact" class="content-section">
+                    <h2 class="text-white text-3xl font-bold mb-4 relative inline-block">
+                        Contact
+                        <div class="h-1 w-12 accent-bg rounded-full mt-2"></div>
+                    </h2>
+                    <div class="mt-6 mb-8 rounded-2xl overflow-hidden border border-[#383838]">
+                        <iframe 
+                            src="https://www.google.com/maps?q=Mojokerto,Jawa+Timur&output=embed"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <form class="mt-8 grid grid-cols-1 gap-4">
+                        <h3 class="text-white text-2xl font-bold mb-4">Contact From</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Full Name" class="bg-transparent border border-[#383838] rounded-xl p-3 outline-none focus:border-[#ffdb70]">
+                            <input type="email" placeholder="Email Address" class="bg-transparent border border-[#383838] rounded-xl p-3 outline-none focus:border-[#ffdb70]">
+                        </div>
+                        <textarea rows="4" placeholder="Your Message" class="bg-transparent border border-[#383838] rounded-xl p-3 outline-none focus:border-[#ffdb70]"></textarea>
+                        <div class="flex justify-end">
+                            <button type="button" class="accent-bg text-black font-semibold px-6 py-3 rounded-xl hover:opacity-80 transition">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+
+            </section>
+        </main>
+    </div>
+    <div id="imageModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50" onclick="closeImage()">
+        <img id="modalImg" class="max-w-[90%] max-h-[90%] rounded-2xl shadow-2xl">
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // Sembunyikan semua section
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Hilangkan status aktif dari semua tombol
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Tampilkan section yang dipilih
+            document.getElementById(tabName).classList.add('active');
+
+            // Set tombol menjadi aktif
+            document.getElementById('btn-' + tabName).classList.add('active', 'accent-text');
+        }
+        function filterPortfolio(event, category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('accent-text'));
+            event.target.classList.add('accent-text');
+
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = item.classList.contains(category) ? 'block' : 'none';
+                }
+            });
+        }
+        function openImage(element) {
+            const img = element.querySelector("img");
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImg");
+
+            modalImg.src = img.src;
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+
+        function closeImage() {
+            const modal = document.getElementById("imageModal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        }
+    </script>
+
+</body>
+</html>
